@@ -27,12 +27,13 @@ var AjaxMonitoringSample =
 		div.innerHTML=
 		`<style>#`+this.mainDivId+`{ z-index:99999; position:fixed; bottom:0px; left:0px; width: 90%; left:5%; margin:0 auto; border:2px solid red; background:orange; border-radius:7px; opacity:0.9; } #`+this.mainDivId+` > *{padding:5px;}</style> 
 		<div>
-			<textarea id="`+this.mainDivId+`_params" style="width:100%; height:40px;" placeholder="{key1:&quot;value1&quot;}"></textarea>
-			<textarea id="`+this.mainDivId+`_headers" style="width:100%; height:40px;" placeholder="{headersArray}"></textarea>
+			<textarea id="`+this.mainDivId+`_params" style="width:100%; height:80px;" placeholder="{key1:&quot;value1&quot;}"></textarea>
+			<textarea id="`+this.mainDivId+`_headers" style="width:100%; height:80px;" placeholder="{headersArray}"></textarea>
+			<textarea id="${this.mainDivId}_method" style="width:100%;height:80px" placeholder="{method}"></textarea>
 			<input type="text" value="" id="`+this.mainDivId+`_url" style="width:100%;" placeholder="http://example.com" /> 
-			<button onclick="`+this.mainDivId+`.submitClicked();">resend</button>  <button id="`+this.mainDivId+`_status" onclick="`+this.mainDivId+`.toggleMonitoring(null);">ON/OFF</button> <input type="checkbox" id="`+this.mainDivId+`_autodisable" /> Disable automatically after first request (to avoid concurrent calls)
-			<div style="display:flex;height:40px;">Response: <textarea disabled id="`+this.mainDivId+`_response" style="width:100%; height:100%;"></textarea></div>
-		</div>`;
+			<div style="display:flex;height:80px;">Response: <textarea disabled id="`+this.mainDivId+`_response" style="width:100%; height:80px;"></textarea></div>
+		</div>
+		<button onclick="`+this.mainDivId+`.submitClicked();">resend</button>  <button id="`+this.mainDivId+`_status" onclick="`+this.mainDivId+`.toggleMonitoring(null);">ON/OFF</button> <input type="checkbox" id="`+this.mainDivId+`_autodisable" /> Disable automatically after first request (to avoid concurrent calls)`;
 		document.body.appendChild(div);
 		this.statusColorize();
 	},
@@ -61,8 +62,8 @@ var AjaxMonitoringSample =
 
 			var XHR_OpenOriginal = XMLHttpRequest.prototype.open;
 			XMLHttpRequest.prototype.open = function(method, uri, async, user, pass) {
-
-				if (! this_.manualSumbission)
+				
+				if (! this_.manualSumbission || method.toLowerCase() != "get")
 				{
 					this.addEventListener("readystatechange", function(event) { 
 
@@ -73,6 +74,8 @@ var AjaxMonitoringSample =
 							{
 								if (method.toLowerCase()!="post_get_or_whatever") {
 									document.getElementById(this_.mainDivId+"_url").value = uri;
+									document.getElementById(this_.mainDivId+"_method").value=method;
+									
 								}
 								
 								if(this_.shouldBeDisabledAfterFirstTrigger()) {
@@ -118,11 +121,12 @@ var AjaxMonitoringSample =
 	{
 		var this_ = this;
 		this.manualSumbission = true;
+
 		var params = JSON.stringify(JSON.parse(document.getElementById(this.mainDivId+"_params").value));  
 		var url = document.getElementById(this.mainDivId+"_url").value;
 
 		var http = new XMLHttpRequest();
-		http.open('POST', url, true);
+		http.open(this.getMethod, url, true);
 		
 		var headers = JSON.parse(document.getElementById(this.mainDivId+"_headers").value); var notUseHeaders= this.lastHeaders;
 		for (var prop in headers) {
@@ -132,9 +136,10 @@ var AjaxMonitoringSample =
 		}
 		http.onreadystatechange = function() {
 			if(http.readyState == 4 && http.status != 999)  
-			{
-				this_.setResponse(http.responseText);
+			{	
 				this_.manualSumbission =false;
+				this_.setResponse(http.responseText);
+				
 			}
 		};
 		http.send(params);
@@ -153,7 +158,10 @@ var AjaxMonitoringSample =
 	shouldBeDisabledAfterFirstTrigger(){ 
 		this.shouldBeDisabledAfterResponse = document.getElementById(this.mainDivId+"_autodisable").checked;
 		return this.shouldBeDisabledAfterResponse; 
-	} 
+	},
+	getMethod() {
+		return document.getElementById(this.mainDivId+"_method").value;
+	}
 };
 
 AjaxMonitoringSample.init();
