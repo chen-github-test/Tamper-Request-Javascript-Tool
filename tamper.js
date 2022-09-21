@@ -54,7 +54,7 @@ var AjaxMonitoringSample =
 			var XHR_SendOriginal = XMLHttpRequest.prototype.send;
 			XMLHttpRequest.prototype.send = function(data){
  
-				if (! this_.manualSumbission) 
+				if (! this_.manualSumbission ) 
 				{
 					if (this_.monitoring_status)
 					{
@@ -67,7 +67,7 @@ var AjaxMonitoringSample =
 			var XHR_OpenOriginal = XMLHttpRequest.prototype.open;
 			XMLHttpRequest.prototype.open = function(method, uri, async, user, pass) {
 				
-				if (! this_.manualSumbission || method.toLowerCase() != "get")
+				if (! this_.manualSumbission && method.toLowerCase() != "get" && uri.indexOf("fclog.baidu.com")<0)
 				{
 					this.addEventListener("readystatechange", function(event) { 
 
