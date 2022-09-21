@@ -1,6 +1,10 @@
 /* 
 * ###################################################################
+<<<<<<< HEAD
 * ##### https://github.com/ttodua/Tamper-Request-Javascript-Tool2 ####
+=======
+* ##### https://github.com/ttodua/Tamper-Request-Javascript-Tool1 ####
+>>>>>>> a42b8ff8a9880d8edb39e5c63f998a3bb27ce283
 * ### Don't put comments inside body when using the script inline ### 
 * ###################################################################
 */
