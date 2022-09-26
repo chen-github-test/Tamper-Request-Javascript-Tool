@@ -101,8 +101,9 @@ var requestTools={
     var divMain=document.createElement("div");
     let divCode=`
     <style>
-    ._divMain{width: 90%;height: 100px;border: 20px solid rgb(246, 103, 50);background-color:#1f2635;color:rgb(5, 252, 5);opacity: 1;}
-    ._divMainBg{background-color: rgb(246, 103, 50);}
+    ._divMain{width: 90%;height: 100px;border: 20px solid rgb(246, 103, 50);background-color:#1f2635;color:rgb(5, 252, 5);}
+    #_divMain{z-index:99999; position:absolute;left:0px; width: 90%; left:5%;opacity: 1;}
+    ._divMainBg{background-color: rgb(246, 103, 50);margin:0 auto;}
     #_divMainStn{color:rgb(5, 252, 5);; background-color: #1f2635;width: 20%;display: inline-block;margin: 0 auto;}
     #_divMainParse{color:rgb(5, 252, 5);; background-color: #1f2635;width: 20%;display: inline-block;margin: 0 auto;}
   
