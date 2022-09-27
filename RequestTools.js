@@ -1,49 +1,4 @@
-let cmdCommand=`
-curl 'https://api-test.gengesports.cn/v2/user/info/game' \
-  -X 'PATCH' \
-  -H 'authority: api-test.gengesports.cn' \
-  -H 'accept: application/json, text/plain, */*' \
-  -H 'accept-language: zh-CN,zh;q=0.9' \
-  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiI5MzAwZTJmYjNhNTcxMWVkYTQ4MTAyNDJhYzExMDAwOCIsImV4cCI6MTY2NDQ0MzIwOSwianRpIjoiMGJiNGVlYTgtY2NhMi00ZTMwLThhYmYtMGE5OTY4NjAxMjE4IiwiaWF0IjoxNjYzODM4NDA5LCJ1aWQiOiI3NTkiLCJzaWQiOiI3NDg5MjE5MDY1MjQ0ODJlYWZiNzI5NTQ0NjYwYjk1YyJ9.XGIJP3MtaXXRxBVUXFP63lDm33JP29NWepPEvVETh24' \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: application/json' \
-  -H 'origin: https://academy-test.gengesports.cn' \
-  -H 'pragma: no-cache' \
-  -H 'referer: https://academy-test.gengesports.cn/' \
-  -H 'sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"' \
-  -H 'sec-ch-ua-mobile: ?0' \
-  -H 'sec-ch-ua-platform: "Windows"' \
-  -H 'sec-fetch-dest: empty' \
-  -H 'sec-fetch-mode: cors' \
-  -H 'sec-fetch-site: same-site' \
-  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
-  -H 'x-request-id: b55eab7edc8c' \
-  --data-raw '[{"game_info_id":1,"game_info_value":null},{"game_info_id":2,"game_info_value":null},{"game_info_id":3,"game_info_value":null},{"game_info_id":4,"game_info_value":null},{"game_info_id":5,"game_info_value":null},{"game_info_id":6,"game_info_value":null}]' \
-  --compressed
-`
-let cmdCommand1=`
-curl "https://api-test.gengesports.cn/v2/user/info/game" ^
-  -X "PATCH" ^
-  -H "authority: api-test.gengesports.cn" ^
-  -H "accept: application/json, text/plain, */*" ^
-  -H "accept-language: zh-CN,zh;q=0.9" ^
-  -H "authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiI5MzAwZTJmYjNhNTcxMWVkYTQ4MTAyNDJhYzExMDAwOCIsImV4cCI6MTY2NDQ0MzIwOSwianRpIjoiMGJiNGVlYTgtY2NhMi00ZTMwLThhYmYtMGE5OTY4NjAxMjE4IiwiaWF0IjoxNjYzODM4NDA5LCJ1aWQiOiI3NTkiLCJzaWQiOiI3NDg5MjE5MDY1MjQ0ODJlYWZiNzI5NTQ0NjYwYjk1YyJ9.XGIJP3MtaXXRxBVUXFP63lDm33JP29NWepPEvVETh24" ^
-  -H "cache-control: no-cache" ^
-  -H "content-type: application/json" ^
-  -H "origin: https://academy-test.gengesports.cn" ^
-  -H "pragma: no-cache" ^
-  -H "referer: https://academy-test.gengesports.cn/" ^
-  -H "sec-ch-ua: ^\^"Google Chrome^\^";v=^\^"105^\^", ^\^"Not)A;Brand^\^";v=^\^"8^\^", ^\^"Chromium^\^";v=^\^"105^\^"" ^
-  -H "sec-ch-ua-mobile: ?0" ^
-  -H "sec-ch-ua-platform: ^\^"Windows^\^"" ^
-  -H "sec-fetch-dest: empty" ^
-  -H "sec-fetch-mode: cors" ^
-  -H "sec-fetch-site: same-site" ^
-  -H "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" ^
-  -H "x-request-id: b55eab7edc8c" ^
-  --data-raw "^[^{^\^"game_info_id^\^":1,^\^"game_info_value^\^":null^},^{^\^"game_info_id^\^":2,^\^"game_info_value^\^":null^},^{^\^"game_info_id^\^":3,^\^"game_info_value^\^":null^},^{^\^"game_info_id^\^":4,^\^"game_info_value^\^":null^},^{^\^"game_info_id^\^":5,^\^"game_info_value^\^":null^},^{^\^"game_info_id^\^":6,^\^"game_info_value^\^":null^}^]" ^
-  --compressed
-`
+
 var requestTools={
   requestObj:{},
   init:function(){
@@ -84,7 +39,7 @@ var requestTools={
 
       if(true) {
         try {
-          return res.json()
+          return res.json();
         } catch (error) {
           return res.text();
           throw error;
@@ -104,8 +59,8 @@ var requestTools={
     ._divMain{width: 90%;height: 100px;border: 20px solid rgb(246, 103, 50);background-color:#1f2635;color:rgb(5, 252, 5);}
     #_divMain{z-index:99999; position:absolute;left:0px; width: 90%; left:5%;opacity: 1;}
     ._divMainBg{background-color: rgb(246, 103, 50);margin:0 auto;}
-    #_divMainStn{color:rgb(5, 252, 5);; background-color: #1f2635;width: 20%;display: inline-block;margin: 0 auto;}
-    #_divMainParse{color:rgb(5, 252, 5);; background-color: #1f2635;width: 20%;display: inline-block;margin: 0 auto;}
+    #_divMainStn{color:rgb(5, 252, 5);; background-color: #1f2635;width: 25%;display: block;margin: 0 auto;}
+  
   
   </style>
   <div class="_divMainBg">
@@ -133,7 +88,6 @@ var requestTools={
     <textarea placeholder="RequestRawData" id="_divMain_rawData" class="_divMain"></textarea>
   </div>
   <div class="_divMainBg">
-    <button id="_divMainParse">Parse</button>
     <button id="_divMainStn">Send</button>
   </div>
     `;
@@ -143,7 +97,11 @@ var requestTools={
     var submitbtn=document.getElementById("_divMainStn");
     /*console.log("test element",submitbtn);*/
     submitbtn.addEventListener("click",this.sendFetch);
-    document.getElementById("_divMainParse").addEventListener("click",this.handlerBeforSend);
+    document.getElementById("_divMain_rawData").addEventListener("paste",async(e)=>{
+      const pasteText=await navigator.clipboard.readText();
+      this.handlerBeforSend();
+    }
+    );
   },
   handFunc:function(command){
     this.requestObj={};
