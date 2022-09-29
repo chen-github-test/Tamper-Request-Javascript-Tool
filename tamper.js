@@ -1,7 +1,11 @@
 /* 
 * ###################################################################
 * ##### https://github.com/ttodua/Tamper-Request-Javascript-Tool2 ####
+<<<<<<< HEAD
 * ### Don't put comments inside body when using the script inline ### 
+=======
+* ### Don't put comments inside body when using the script inline test optimize_function change file ### 
+>>>>>>> optimize_function
 * ###################################################################
 */
 
