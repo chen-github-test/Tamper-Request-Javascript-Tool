@@ -1,7 +1,7 @@
 /* 
 * ###################################################################
 * ##### https://github.com/ttodua/Tamper-Request-Javascript-Tool2 ####
-* ### Don't put comments inside body when using the script inline  hotfix### 
+* ### Don't put comments inside body when using the script inline### 
 * ###################################################################
 */
 
