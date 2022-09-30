@@ -20,3 +20,9 @@ Usage
 ![example](https://i.imgur.com/145np9J.png)
 
 * Make any AJAX request on the target website and you will see the request tampered and filled. Then you can modify & replay it.
+---
+RequestTools.js
+* copy Chrome or Edge deve tools CURL requests as data
+ReqeuestTools page will parse data and reset data
+![image](https://user-images.githubusercontent.com/80472987/192755781-9f7cebd3-320a-46c6-bcc7-11dfd440c914.png)
+
